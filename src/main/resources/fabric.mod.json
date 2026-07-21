@@ -3,7 +3,7 @@
   "id": "midpoint-optimizer",
   "version": "${version}",
   "name": "MidpointOptimizer",
-  "description": "Advanced FPS optimizer with Smart Optimizer and Low End Mode",
+  "description": "Advanced FPS optimizer with Smart Optimizer and Low End Mode for Fabric 1.21.11",
   "authors": ["Midpoint"],
   "contact": {
     "homepage": "https://github.com/Midpoint/MidpointOptimizer",
@@ -24,13 +24,13 @@
     "midpoint-optimizer.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "minecraft": "${minecraft_version}",
-    "fabric-api": ">=${fabric_version}",
+    "fabricloader": ">=0.16.13",
+    "minecraft": "1.21.11",
+    "fabric-api": ">=0.141.4",
     "java": ">=21"
   },
   "recommends": {
-    "modmenu": ">=${modmenu_version}"
+    "modmenu": ">=11.0.0"
   },
   "breaks": {
     "optifabric": "*"
