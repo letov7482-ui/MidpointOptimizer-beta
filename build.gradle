@@ -12,27 +12,19 @@ base {
 
 repositories {
     mavenCentral()
-    maven {
-        name = "Terraformers"
-        url = "https://maven.terraformersmc.com/"
-    }
+    // maven {                          // ← ВРЕМЕННО ОТКЛЮЧИЛИ
+    //     name = "Terraformers"
+    //     url = "https://maven.terraformersmc.com/"
+    // }
 }
 
 dependencies {
-    // Minecraft 1.21.11
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    
-    // Mappings
     mappings loom.officialMojangMappings()
-    
-    // Fabric Loader
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    
-    // Fabric API для 1.21.11
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     
-    // Mod Menu
-    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+    // modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"  // ← ВРЕМЕННО ОТКЛЮЧИЛИ
 }
 
 loom {
@@ -72,14 +64,5 @@ java {
 jar {
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}"}
-    }
-}
-
-publishing {
-    publications {
-        create("mavenJava", MavenPublication) {
-            artifactId = project.archives_base_name
-            from components.java
-        }
     }
 }
