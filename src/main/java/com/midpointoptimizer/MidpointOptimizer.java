@@ -10,6 +10,6 @@ public class MidpointOptimizer implements ClientModInitializer {
     
     @Override
     public void onInitializeClient() {
-        LOGGER.info("MidpointOptimizer v1.0.0 loaded!");
+        LOGGER.info("MidpointOptimizer v1.0.0 loaded successfully!");
     }
 }
