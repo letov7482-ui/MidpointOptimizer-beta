@@ -1,0 +1,34 @@
+plugins {
+    id 'fabric-loom' version '1.9.2'
+}
+
+version = "1.0.0"
+group = "com.midpointoptimizer"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.21.4"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:0.16.13"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.106.0+1.21.4"
+}
+
+loom {
+    runs {
+        client {
+            client()
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile) {
+    options.release = 21
+}
