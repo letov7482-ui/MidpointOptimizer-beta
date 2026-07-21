@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "midpoint-optimizer",
+  "version": "1.0.0",
+  "name": "MidpointOptimizer",
+  "description": "Advanced FPS optimizer with Smart Optimizer and Low End Mode for Fabric 1.21.11",
+  "authors": ["Midpoint"],
+  "contact": {
+    "homepage": "https://github.com/Midpoint/MidpointOptimizer",
+    "sources": "https://github.com/Midpoint/MidpointOptimizer"
+  },
+  "license": "MIT",
+  "icon": "assets/midpoint-optimizer/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.midpointoptimizer.MidpointOptimizer"
+    ]
+  },
+  "mixins": [
+    "midpoint-optimizer.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.13",
+    "minecraft": ">=1.21.11",
+    "fabric-api": ">=0.141.4",
+    "java": ">=21"
+  },
+  "recommends": {
+    "modmenu": ">=11.0.0"
+  },
+  "breaks": {
+    "optifabric": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/midpoint"
+      },
+      "update_checker": true
+    }
+  }
+}
