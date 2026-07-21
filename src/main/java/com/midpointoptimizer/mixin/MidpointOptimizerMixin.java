@@ -11,6 +11,7 @@ public class MidpointOptimizerMixin {
     
     @Inject(method = "render", at = @At("HEAD"))
     private void onRender(CallbackInfo ci) {
-        // Optimization hooks will go here
+        // Optimization hooks for WorldRenderer
+        // This will be expanded with actual optimization code
     }
 }
