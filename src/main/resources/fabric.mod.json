@@ -15,9 +15,6 @@
   "entrypoints": {
     "client": [
       "com.midpointoptimizer.MidpointOptimizer"
-    ],
-    "modmenu": [
-      "com.midpointoptimizer.gui.ModMenuIntegration"
     ]
   },
   "mixins": [
@@ -29,18 +26,7 @@
     "fabric-api": ">=0.141.4",
     "java": ">=21"
   },
-  "recommends": {
-    "modmenu": ">=11.0.0"
-  },
   "breaks": {
     "optifabric": "*"
-  },
-  "custom": {
-    "modmenu": {
-      "links": {
-        "modmenu.discord": "https://discord.gg/midpoint"
-      },
-      "update_checker": true
-    }
   }
 }
