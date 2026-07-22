@@ -1,34 +1,36 @@
 plugins {
-    id 'fabric-loom' version '1.9.2'
+    id("fabric-loom") version "1.10.5"
+    id("java") // если нужен jar с manifest
 }
 
 version = "1.0.0"
-group = "com.midpointoptimizer"
+group = "midpoint"
 
 repositories {
     mavenCentral()
+    maven("https://maven.fabricmc.net/")
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:1.21.1"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:0.16.13"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:0.102.1+1.21.1"
+    minecraft("com.mojang:minecraft:1.21.11")
+    mappings("com.mojang:mapping:1.21.11:org")
+    modImplementation("net.fabricmc:fabric-api:0.111.0+1.21.11")
 }
 
-loom {
-    runs {
-        client {
-            client()
-        }
+tasks.withType<org.gradle.jvm.tasks.Jar> {
+    manifest {
+        attributes(mapOf(
+            "Fabric-Jar-Type" to "classes",
+            "Fabric-Loom-Mixin-Remap-Type" to "mixin",
+            "Fabric-Gradle-Version" to "8.12.1",
+            "Fabric-Loom-Version" to "1.10.5",
+            "Fabric-Minecraft-Version" to "1.21.11",
+            "Fabric-Loader-Version" to "0.18.0",
+            "Fabric-Mixin-Version" to "0.15.4+mixin.0.8.7",
+            "Fabric-Mixin-Group" to "net.fabricmc",
+            "Fabric-Mapping-Namespace" to "intermediary",
+            "Fabric-Mixin-Compile-Extensions-Version" to "0.6.0",
+            "Fabric-Tiny-Remapper-Version" to "0.11.1"
+        ))
     }
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
-}
-
-tasks.withType(JavaCompile) {
-    options.release = 21
 }
