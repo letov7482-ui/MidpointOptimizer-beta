@@ -1,21 +1,45 @@
 {
   "schemaVersion": 1,
-  "id": "midpoint-optimizer",
+  "id": "midpoint",
   "version": "1.0.0",
-  "name": "MidpointOptimizer",
-  "description": "Advanced FPS optimizer for Fabric 1.21.1",
-  "authors": ["Midpoint"],
-  "license": "MIT",
+  "name": "Midpoint",
+  "description": "Client-side optimization utilities with an adaptive FPS HUD, smart safe optimizations, and a low-end preset for Fabric 1.21.11.",
+  "authors": [
+    "midpoint"
+  ],
+  "contributors": [
+    "midpoint"
+  ],
+  "contact": {
+    "sources": "https://example.invalid/midpoint"
+  },
+  "license": "ARR",
+  "icon": "assets/midpoint/icon.png",
   "environment": "client",
   "entrypoints": {
+    "main": [
+      "midpoint.midpointoptimizer.MidpointOptimizer"
+    ],
     "client": [
-      "com.midpointoptimizer.MidpointOptimizer"
+      "midpoint.midpointoptimizer.MidpointOptimizerClient"
+    ],
+    "modmenu": [
+      "midpoint.midpointoptimizer.integration.MidpointModMenuApi"
     ]
   },
   "depends": {
-    "fabricloader": ">=0.16.13",
-    "minecraft": "1.21.1",
-    "fabric-api": ">=0.102.1",
-    "java": ">=21"
+    "fabricloader": ">=0.18.0",
+    "minecraft": "\~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "modmenu": "*"
+  },
+  "custom": {
+    "midpoint": {
+      "author": "midpoint",
+      "modmenuDisplayAuthor": "midpoint"
+    }
   }
 }
