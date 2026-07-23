@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.9.2'  // УМЕНЬШИЛ ВЕРСИЮ ДЛЯ СОВМЕСТИМОСТИ С GRADLE 8.5
+    id 'fabric-loom' version '1.9.2'
     id 'java'
 }
 
@@ -19,9 +19,6 @@ dependencies {
     mappings "net.fabricmc:yarn:1.21.4+build.1:v2"
     modImplementation "net.fabricmc:fabric-loader:0.15.11"
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.92.0+1.21.4"
-    
-    // Gson для конфига
-    implementation 'com.google.code.gson:gson:2.10.1'
 }
 
 tasks.withType(JavaCompile) {
@@ -31,7 +28,7 @@ tasks.withType(JavaCompile) {
 
 jar {
     from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}"}
+        rename { "${it}_${project.name}" }
     }
 }
 
