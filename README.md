@@ -1,2 +1,18 @@
-# MidpointOptimizer-beta
-Advanced FPS optimizer and performance tool for Minecraft Fabric 1.21.4
+# Midpoint Client
+
+**Божественный клиент для FunTime 1.21.4**
+
+## Возможности
+- KillAura с человеческим таймингом
+- Поиск мистиков с маркером "M"
+- ESP для игроков и сущностей
+- Обход античита Polar
+- Настройка через Mod Menu (клавиша P)
+
+## Установка
+1. Скачай JAR из артефактов Actions
+2. Кинуть в папку mods
+3. Нажать P для открытия меню
+
+## Автор
+Midpoint
