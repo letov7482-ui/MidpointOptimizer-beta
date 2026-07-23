@@ -22,8 +22,8 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v3
       with:
-        gradle-version: '8.5'
-        arguments: build
+        gradle-version: '8.5'  # ОСТАВЛЯЕМ 8.5
+        arguments: build --stacktrace
         
     - name: Upload JAR
       uses: actions/upload-artifact@v4
