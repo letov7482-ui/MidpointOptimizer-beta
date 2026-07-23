@@ -7,32 +7,27 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04  # СТАРАЯ ВЕРСИЯ ДЛЯ СТАБИЛЬНОСТИ
+    runs-on: ubuntu-22.04
     
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Setup JDK 17  # ИСПОЛЬЗУЕМ JAVA 17 (НЕ 21)
+    - name: Setup JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
         
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
+    - name: Clean Gradle cache
+      run: rm -rf ~/.gradle/caches/
+        
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@v3
       with:
         gradle-version: '8.5'
+        arguments: clean build --no-daemon --stacktrace
         
-    - name: Clean build
-      run: |
-        rm -rf ~/.gradle/caches/
-        rm -rf .gradle/
-        ./gradlew clean
-        
-    - name: Build
-      run: ./gradlew build --no-daemon --stacktrace
-      
     - name: Upload JAR
       uses: actions/upload-artifact@v4
       with:
