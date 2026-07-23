@@ -1,36 +1,43 @@
 plugins {
-    id("fabric-loom") version "1.10.5"
-    id("java") // если нужен jar с manifest
+    id 'fabric-loom' version '1.9.2'  // УМЕНЬШИЛ ВЕРСИЮ ДЛЯ СОВМЕСТИМОСТИ С GRADLE 8.5
+    id 'java'
 }
 
-version = "1.0.0"
-group = "midpoint"
+version = '1.0.0'
+group = 'me.midpoint'
 
 repositories {
     mavenCentral()
-    maven("https://maven.fabricmc.net/")
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:1.21.11")
-    mappings("com.mojang:mapping:1.21.11:org")
-    modImplementation("net.fabricmc:fabric-api:0.111.0+1.21.11")
+    minecraft "com.mojang:minecraft:1.21.4"
+    mappings "net.fabricmc:yarn:1.21.4+build.1:v2"
+    modImplementation "net.fabricmc:fabric-loader:0.15.11"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.92.0+1.21.4"
+    
+    // Gson для конфига
+    implementation 'com.google.code.gson:gson:2.10.1'
 }
 
-tasks.withType<org.gradle.jvm.tasks.Jar> {
-    manifest {
-        attributes(mapOf(
-            "Fabric-Jar-Type" to "classes",
-            "Fabric-Loom-Mixin-Remap-Type" to "mixin",
-            "Fabric-Gradle-Version" to "8.12.1",
-            "Fabric-Loom-Version" to "1.10.5",
-            "Fabric-Minecraft-Version" to "1.21.11",
-            "Fabric-Loader-Version" to "0.18.0",
-            "Fabric-Mixin-Version" to "0.15.4+mixin.0.8.7",
-            "Fabric-Mixin-Group" to "net.fabricmc",
-            "Fabric-Mapping-Namespace" to "intermediary",
-            "Fabric-Mixin-Compile-Extensions-Version" to "0.6.0",
-            "Fabric-Tiny-Remapper-Version" to "0.11.1"
-        ))
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    options.release = 21
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archivesBaseName}"}
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
     }
 }
